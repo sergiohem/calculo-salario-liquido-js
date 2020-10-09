@@ -10,7 +10,7 @@ const aliquota_2_IRRF = 0.15;
 const aliquota_3_IRRF = 0.225;
 const aliquota_4_IRRF = 0.275;
 
-//Variáveis auxiliares utilizadas no cálculo para serem exibidas na tabela de resultados
+//Variáveis auxiliares utilizadas no cálculo para serem exibidas na tabela de resultados...
 let aliquotaINSSAux = null;
 let aliquotaIRRFAux = null;
 let descontoINSSAux = null;
