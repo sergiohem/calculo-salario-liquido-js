@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#btnCalcularSalario {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btnCalcularSalario :hover {
+    background-color: #45a049;
+}
+
+#content {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#divTabelaResultados {
+    margin-top: 15px;
+}
+
+#tabelaResultados {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  }
+  
+  #tabelaResultados td, #tabelaResultados th {
+    border: 1px solid #000;
+    padding: 8px;
+  }
+/*   
+  #tabelaResultados tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #tabelaResultados tr:hover {background-color: #ddd;} */
+  
+  #tabelaResultados th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #5b5b5b;
+    color: white;
+  }
