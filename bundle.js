@@ -18,7 +18,7 @@ var descontoIRRFAux = null;
 
 function calcularSalarioLiquido() {
   document.getElementById("divTabelaResultados").style.display = 'none';
-  var salarioBruto = document.getElementById("salarioBruto").value;
+  var salarioBruto = document.getElementById("salarioBruto").value.replace('.', '');
   console.log(salarioBruto);
 
   if (!salarioBruto || salarioBruto < 1045) {
@@ -91,4 +91,9 @@ function calcularSalarioDescontoIRRF(salarioINSS) {
 
   descontoIRRFAux = descontoIRRF;
   return salario - descontoIRRF;
+}
+
+function formataDinheiro(n) {
+  console.log(n);
+  return parseFloat(n.replace('.', '').replace(',', '.')).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
 }

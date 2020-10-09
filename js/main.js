@@ -10,7 +10,7 @@ const aliquota_2_IRRF = 0.15;
 const aliquota_3_IRRF = 0.225;
 const aliquota_4_IRRF = 0.275;
 
-//Variáveis auxiliares utilizadas no cálculo para serem exibidas na tabela de resultados...
+//Variáveis auxiliares utilizadas no cálculo para serem exibidas na tabela de resultados
 let aliquotaINSSAux = null;
 let aliquotaIRRFAux = null;
 let descontoINSSAux = null;
@@ -20,7 +20,7 @@ function calcularSalarioLiquido() {
 
     document.getElementById("divTabelaResultados").style.display = 'none';
 
-    const salarioBruto = document.getElementById("salarioBruto").value;
+    const salarioBruto = document.getElementById("salarioBruto").value.replace('.', '');
 
     console.log(salarioBruto);
 
@@ -88,4 +88,9 @@ function calcularSalarioDescontoIRRF(salarioINSS) {
     descontoIRRFAux = descontoIRRF;
 
     return salario - descontoIRRF;
+}
+
+function formataDinheiro(n) {
+    console.log(n);
+    return parseFloat(n.replace('.', '').replace(',', '.')).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
 }

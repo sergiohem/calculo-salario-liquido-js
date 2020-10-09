@@ -10,7 +10,7 @@
     <h1>Cálculo de Salário Líquido</h1>
     <div id="content">
         <label>Informe abaixo seu salário bruto:</label>
-        <input type="number" step="any" min="1045" id="salarioBruto" placeholder="Exemplo: R$ 2.000,00">
+        <input type="text" id="salarioBruto" onchange="formataDinheiro(this.value)" placeholder="Exemplo: R$ 2.000,00">
         <button type="button" id="btnCalcularSalario" onclick="calcularSalarioLiquido()">Calcular</button>
         <div id="divTabelaResultados" style="display: none;">
             <table id="tabelaResultados">
