@@ -15,7 +15,7 @@ http://www.receita.economia.gov.br/acesso-rapido/tributos/irpf-imposto-de-renda-
 1) Instale o Node.js (https://nodejs.org/en/download/) e em seguida o Yarn (https://classic.yarnpkg.com/en/docs/install/). Caso já tenha essas ferramentas instaladas,
 desconsidere este tópico.
 
-2) Na pasta raiz do projeto, abra seu prompt de comando (terminal) de preferência e execute o comando a seguir para obter os pacotes utilizados no projeto:
+2) Na pasta raiz do projeto, abra seu prompt de comando (terminal) de preferência e execute o comando a seguir para obter os pacotes (node_modules) utilizados no projeto:
 
 > yarn install
 
