@@ -20,3 +20,9 @@ desconsidere este tópico.
 > yarn install
 
 3) Para finalizar, abra o arquivo index.html em seu navegador de preferência e pronto, já pode realizar o cálculo de seu salário líquido :)
+
+## Realizar modificações no código:
+
+1) Para realizar modificações no código ou novos testes das funções criadas, execute o comando a seguir para que suas mudanças sejam atualizadas no arquivo bundle.js:
+
+> yarn dev
