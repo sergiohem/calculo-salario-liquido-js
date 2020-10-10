@@ -20,9 +20,7 @@ function calcularSalarioLiquido() {
 
     document.getElementById("divTabelaResultados").style.display = 'none';
 
-    const salarioBruto = document.getElementById("salarioBruto").value.replace('.', '');
-
-    console.log(salarioBruto);
+    const salarioBruto = parseFloat(document.getElementById("salarioBruto").value.replace('.', '').replace(',', '.'));
 
     if (!salarioBruto || salarioBruto < 1045) {
         alert("Informe um salário maior ou igual a R$ 1.045,00.");
@@ -31,7 +29,7 @@ function calcularSalarioLiquido() {
 
     let salarioLiquido = calcularSalarioDescontoIRRF(calcularSalarioDescontoINSS(salarioBruto));
     
-    document.getElementById("aliquotaINSS").innerHTML = aliquotaINSSAux;
+    document.getElementById("aliquotaINSS").innerHTML = aliquotaINSSAux != null ? aliquotaINSSAux : '---';
     document.getElementById("aliquotaIRRF").innerHTML = aliquotaIRRFAux != null ? aliquotaIRRFAux : '---';
     document.getElementById("valorINSS").innerHTML = parseFloat(descontoINSSAux).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     document.getElementById("valorIRRF").innerHTML = parseFloat(descontoIRRFAux).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -45,16 +43,16 @@ function calcularSalarioDescontoINSS(salarioBruto) {
     let descontoINSS = 0;
     if (salario <= 1045.00) {
         descontoINSS = salario * aliquota_1_INSS;
-        aliquotaINSSAux = aliquota_1_INSS * 100 + '%';
+        aliquotaINSSAux = parseFloat((aliquota_1_INSS * 100).toFixed(1)) + '%';
     } else if (salario >= 1045.01 && salario <= 2089.60) {
         descontoINSS = salario * aliquota_2_INSS;
-        aliquotaINSSAux = aliquota_2_INSS * 100 + '%';
+        aliquotaINSSAux = parseFloat((aliquota_2_INSS * 100).toFixed(1)) + '%';
     } else if (salario >= 2089.61 && salario <= 3134.40) {
         descontoINSS = salario * aliquota_3_INSS;
-        aliquotaINSSAux = aliquota_3_INSS * 100 + '%';
+        aliquotaINSSAux = parseFloat((aliquota_3_INSS * 100).toFixed(1)) + '%';
     } else if (salario >= 3134.41 && salario <= 6101.06) {
         descontoINSS = salario * aliquota_4_INSS;
-        aliquotaINSSAux = aliquota_4_INSS * 100 + '%';
+        aliquotaINSSAux = parseFloat((aliquota_4_INSS * 100).toFixed(1)) + '%';
     } else {
 
         //Desconto para salários superiores a R$ 6.101,06
@@ -73,16 +71,16 @@ function calcularSalarioDescontoIRRF(salarioINSS) {
         descontoIRRF = 0;
     } else if (salario >= 1903.99 && salario <= 2826.55) {
         descontoIRRF = salario * aliquota_1_IRRF;
-        aliquotaIRRFAux = aliquota_1_IRRF * 100 + '%';
+        aliquotaIRRFAux = parseFloat((aliquota_1_IRRF * 100).toFixed(1)) + '%';
     } else if (salario >= 2826.56 && salario <= 3751.05) {
         descontoIRRF = salario * aliquota_2_IRRF;
-        aliquotaIRRFAux = aliquota_2_IRRF * 100 + '%';
+        aliquotaIRRFAux = parseFloat((aliquota_2_IRRF * 100).toFixed(1)) + '%';
     } else if (salario >= 3751.06 && salario <= 4664.68) {
         descontoIRRF = salario * aliquota_3_IRRF;
-        aliquotaIRRFAux = aliquota_3_IRRF * 100 + '%';
+        aliquotaIRRFAux = parseFloat((aliquota_3_IRRF * 100).toFixed(1)) + '%';
     } else if (salario > 4664.68) {
-        descontoINSS = salario * aliquota_4_IRRF;
-        aliquotaIRRFAux = aliquota_4_IRRF * 100 + '%';
+        descontoIRRF = salario * aliquota_4_IRRF;
+        aliquotaIRRFAux = parseFloat((aliquota_4_IRRF * 100).toFixed(1)) + '%';
     }
 
     descontoIRRFAux = descontoIRRF;
@@ -90,7 +88,12 @@ function calcularSalarioDescontoIRRF(salarioINSS) {
     return salario - descontoIRRF;
 }
 
-function formataDinheiro(n) {
-    console.log(n);
-    return parseFloat(n.replace('.', '').replace(',', '.')).toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
+//Função extraída do link: https://pt.stackoverflow.com/a/360910
+function formatarMoeda(i) {
+	let v = i.value.replace(/\D/g,'');
+	v = (v/100).toFixed(2) + '';
+	v = v.replace(".", ",");
+	v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+	v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
+	i.value = v;
 }
