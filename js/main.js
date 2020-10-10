@@ -27,6 +27,12 @@ function calcularSalarioLiquido() {
         return false;
     }
 
+    //Resetando aliquotas auxiliares para novo cálculo
+    aliquotaINSSAux = null;
+    aliquotaIRRFAux = null;
+    descontoINSSAux = null;
+    descontoIRRFAux = null;
+
     let salarioLiquido = calcularSalarioDescontoIRRF(calcularSalarioDescontoINSS(salarioBruto));
     
     document.getElementById("aliquotaINSS").innerHTML = aliquotaINSSAux != null ? aliquotaINSSAux : '---';
@@ -42,6 +48,7 @@ function calcularSalarioDescontoINSS(salarioBruto) {
     const salario = parseFloat(salarioBruto);
     let descontoINSS = 0;
     if (salario <= 1045.00) {
+        console.log('teste');
         descontoINSS = salario * aliquota_1_INSS;
         aliquotaINSSAux = parseFloat((aliquota_1_INSS * 100).toFixed(1)) + '%';
     } else if (salario >= 1045.01 && salario <= 2089.60) {

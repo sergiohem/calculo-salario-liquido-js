@@ -23,8 +23,13 @@ function calcularSalarioLiquido() {
   if (!salarioBruto || salarioBruto < 1045) {
     alert("Informe um salário maior ou igual a R$ 1.045,00.");
     return false;
-  }
+  } //Resetando aliquotas auxiliares para novo cálculo
 
+
+  aliquotaINSSAux = null;
+  aliquotaIRRFAux = null;
+  descontoINSSAux = null;
+  descontoIRRFAux = null;
   var salarioLiquido = calcularSalarioDescontoIRRF(calcularSalarioDescontoINSS(salarioBruto));
   document.getElementById("aliquotaINSS").innerHTML = aliquotaINSSAux != null ? aliquotaINSSAux : '---';
   document.getElementById("aliquotaIRRF").innerHTML = aliquotaIRRFAux != null ? aliquotaIRRFAux : '---';
@@ -48,6 +53,7 @@ function calcularSalarioDescontoINSS(salarioBruto) {
   var descontoINSS = 0;
 
   if (salario <= 1045.00) {
+    console.log('teste');
     descontoINSS = salario * aliquota_1_INSS;
     aliquotaINSSAux = parseFloat((aliquota_1_INSS * 100).toFixed(1)) + '%';
   } else if (salario >= 1045.01 && salario <= 2089.60) {
